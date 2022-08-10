@@ -14,10 +14,8 @@ body {
   position: relative; }
 
 .container {
-  /* width: 300px;
-  height: 300px; */
   display: flex;
-  max-width: 85%;
+  max-width: 90%;
   flex-wrap: wrap;
   border: solid black;
 }
@@ -76,5 +74,3 @@ body {
   margin-top: 0.5em;
   margin-right: 0.6em;
 }
-
-/* flex-fill */
