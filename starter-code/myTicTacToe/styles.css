@@ -13,7 +13,7 @@
 .container > div {
   text-align: center;
   width: calc(100% / 3);
-  background-color: green;
+  background-color: #1F3641;
   border: solid red 1px;
 }
 
