@@ -2,10 +2,22 @@
   box-sizing: border-box;
 }
 
-.container {
-  width: 300px;
-  height: 300px;
+body {
+  font-family: 'Outfit', sans-serif;
+  color: #a8bfc9;
+  background-color: #1A2A33;
+  min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  position: relative; }
+
+.container {
+  /* width: 300px;
+  height: 300px; */
+  display: flex;
+  max-width: 85%;
   flex-wrap: wrap;
   border: solid black;
 }
@@ -17,7 +29,33 @@
   border: solid red 1px;
 }
 
+.main-content {
+  display: grid;
+  margin: 4.5rem 0;
+  grid-gap: 2rem;
+  align-items: center;
+  text-align: center;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
 
+  }
+  .game-board {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 14rem);
+    grid-template-rows: repeat(3, 14rem);
+    grid-gap: 2rem; }
+
+    .game-board-grid-item { 
+      padding: 3.8rem;
+      background-color: #1F3641;
+      border-radius: 1.5rem;
+    }
+
+    /* Add pointer to show interactability. */
+    .game-board-grid-item:hover {
+      cursor: pointer; 
+    }
 
 .tic-box {
     width:  15vh;
@@ -33,10 +71,6 @@
   padding-left: 0;
 }
 
-.board-container {
-  /* margin-left: 40vh !important; */
-  /* height: 70vh; */
-}
 
 .moves-icons {
   margin-top: 0.5em;
