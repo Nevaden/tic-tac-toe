@@ -1,76 +1,183 @@
+
+
 * {
   box-sizing: border-box;
 }
 
+
+html {
+  font-size: 62%;
+  box-sizing: border-box; 
+}
+
+
+
 body {
-  font-family: 'Outfit', sans-serif;
-  color: #a8bfc9;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: #A8BFC9;
   background-color: #1A2A33;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
-  position: relative; }
+  position: relative; 
+}
 
 .container {
-  display: flex;
   max-width: 90%;
-  flex-wrap: wrap;
-  border: solid black;
 }
 
-.container > div {
-  text-align: center;
-  width: calc(100% / 3);
-  background-color: #1F3641;
-  border: solid red 1px;
+.logo-icon {
+  width: 7.2rem;
+  height: 3.2rem; 
 }
 
-.main-content {
+.game-board {
   display: grid;
-  margin: 4.5rem 0;
+  margin: 5rem 0;
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 2rem;
   align-items: center;
   text-align: center;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
 
-  }
-  .game-board {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: repeat(3, 14rem);
-    grid-template-rows: repeat(3, 14rem);
-    grid-gap: 2rem; }
+  display: grid !important; 
+}
+.game-board__turn {
+  width: 100%;
+  background-color: #1f3641;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center; 
+}
 
-    .game-board-grid-item { 
-      padding: 3.8rem;
-      background-color: #1F3641;
-      border-radius: 1.5rem;
-    }
+.game-board__turn-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #A8BfC9; 
+}
 
-    /* Add pointer to show interactability. */
-    .game-board-grid-item:hover {
-      cursor: pointer; 
-    }
+.game-board__restart {
+  width: 50%;
+  background-color: #A8BFC9;
+  padding: 1.6rem;
+  border-radius: 1rem;
+  justify-self: flex-end; 
+}
 
-.tic-box {
-    width:  15vh;
-    height:  15vh;
-    border: 1px solid;
-  }
+.game-board__restart:hover {
+  cursor: pointer;
+  background-color: #DBE8ED; 
+}
 
-  .turn_icon {
-    fill: #A8A8A8;
-  }
+.game-board__restart-icon {
+  width: 2rem;
+  height: 2rem; 
+}
 
-.players-icons {
-  padding-left: 0;
+.playArea {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 14rem);
+  grid-template-rows: repeat(3, 14rem);
+  grid-gap: 2rem; 
+}
+
+.game-board-grid-item {
+padding: 3.8rem;
+background-color: #1F3641;
+box-shadow: inset 0 -0.8rem 0 #0F191E;
+border-radius: 1.5rem; 
 }
 
 
-.moves-icons {
-  margin-top: 0.5em;
-  margin-right: 0.6em;
+.game-board-grid-item:hover {
+  cursor: pointer; 
 }
+
+.game-board-grid-item.x-selected, .game-board-grid-item.o-selected {
+  cursor: not-allowed;
+}
+
+
+.game-board__xWin, .game-board__tie, .game-board__oWin {
+  color: #1A2A33;
+  text-transform: uppercase;
+  padding: 1.3rem 4rem;
+  border-radius: 1.5rem; 
+}
+
+  @media only screen and (max-width: 37.5em) {
+    .game-board__xWin, .game-board__tie, .game-board__oWin {
+      padding: 1rem 2.3rem; } 
+    }
+
+.game-board__xWin {
+  background-color: #31C3BD; 
+}
+
+.game-board__tie {
+  background-color: #A8BFC9; 
+}
+
+.game-board__oWin {
+  background-color: #F2B137; 
+}
+
+.game-board__score-bold {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 3rem; }
+
+  @media only screen and (max-width: 37.5em) {
+  .logo-icon {
+    width: 9.2rem;
+    height: 4.2rem; 
+  }
+}
+    @media only screen and (max-width: 37.5em) {
+      html {
+        font-size: 50%; } 
+      }
+    @media only screen and (max-width: 18.75em) {
+      html {
+        font-size: 30%; } 
+      }
+    @media only screen and (max-width: 37.5em) {
+      .playArea {
+        grid-template-columns: repeat(3, minmax(9.6rem, 1fr));
+        grid-template-rows: repeat(3, minmax(9.6rem, 1fr)); 
+        } 
+      }
+    @media only screen and (max-width: 37.5em) {
+      .game-board-grid-item {
+        padding: 2.8rem; } 
+      }
+    @media only screen and (max-width: 37.5em) {
+      .game-board__xWin, .game-board__tie, .game-board__oWin {
+        padding: 1rem 2.3rem; 
+        } 
+      }
+    @media only screen and (max-width: 37.5em) {
+      .gameplay__highlight {
+        font-size: 2rem;
+        line-height: 2.5rem; 
+        } 
+      }
+
+    @media only screen and (max-width: 37.5em) {
+      .game-board__turn {
+        font-size: 1.4rem;
+        padding: 2rem 1.5rem; 
+        } 
+      }
+      @media only screen and (max-width: 37.5em) {
+        .game-board__score-bold {
+          font-size: 2rem;
+          line-height: 2.5rem; 
+          } 
+        }
