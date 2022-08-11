@@ -1,63 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <main class="container game-board" id="game-board">
-    <div class="XO-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="landing-page" class="landing-page container">
       <div class="logo">
-        <svg class="logo-icon" width="auto" height="auto" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z" fill="#31C3BD"/><path d="M56.1 0c8.765 0 15.87 7.106 15.87 15.87 0 8.766-7.105 15.871-15.87 15.871-8.765 0-15.87-7.105-15.87-15.87C40.23 7.106 47.334 0 56.1 0Zm0 9.405a6.466 6.466 0 1 0 0 12.931 6.466 6.466 0 0 0 0-12.931Z" fill="#F2B137" fill-rule="nonzero"/></g></svg>
+        <svg
+          class="logo-icon"
+          width="auto"
+          height="auto"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z"
+              fill="#31C3BD"
+            />
+            <path
+              d="M56.1 0c8.765 0 15.87 7.106 15.87 15.87 0 8.766-7.105 15.871-15.87 15.871-8.765 0-15.87-7.105-15.87-15.87C40.23 7.106 47.334 0 56.1 0Zm0 9.405a6.466 6.466 0 1 0 0 12.931 6.466 6.466 0 0 0 0-12.931Z"
+              fill="#F2B137"
+              fill-rule="nonzero"
+            />
+          </g>
+        </svg>
       </div>
-    </div>
-    <div id="game-board__turn" class="game-board__turn heading-xs">
+  
+      <div class="pick-symbol">
+        <header class="landing-page_header pick-heading">PICK PLAYER 1'S MARK</header>
+      </div>
+      
+      <div id="select-x" class="landing-page-mark-selection selected">
 
-        <svg viewBox="0 20 60 10" class="game-board__turn-icon" xmlns="http://www.w3.org/2000/svg"><path d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z" fill="#969696" fill-rule="evenodd"/></svg>
+      </div>
+      <div id="select-o" class="landing-page-mark-selection">
+
+      </div>
+      
+    </section>
+
+
+
+
+
+    <!-- second pageee the GAME woOoOo -->
+    <main class="container game-board" id="game-board" style="display: none">
+      <div class="XO-icon">
+        <div class="logo">
+          <svg
+            class="logo-icon"
+            width="auto"
+            height="auto"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="none" fill-rule="evenodd">
+              <path
+                d="M8.562 1.634 16 9.073l7.438-7.439a3 3 0 0 1 4.243 0l2.685 2.685a3 3 0 0 1 0 4.243L22.927 16l7.439 7.438a3 3 0 0 1 0 4.243l-2.685 2.685a3 3 0 0 1-4.243 0L16 22.927l-7.438 7.439a3 3 0 0 1-4.243 0L1.634 27.68a3 3 0 0 1 0-4.243L9.073 16 1.634 8.562a3 3 0 0 1 0-4.243L4.32 1.634a3 3 0 0 1 4.243 0Z"
+                fill="#31C3BD"
+              />
+              <path
+                d="M56.1 0c8.765 0 15.87 7.106 15.87 15.87 0 8.766-7.105 15.871-15.87 15.871-8.765 0-15.87-7.105-15.87-15.87C40.23 7.106 47.334 0 56.1 0Zm0 9.405a6.466 6.466 0 1 0 0 12.931 6.466 6.466 0 0 0 0-12.931Z"
+                fill="#F2B137"
+                fill-rule="nonzero"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="game-board__turn" class="game-board__turn heading-xs">
+        <svg
+          viewBox="0 20 60 10"
+          class="game-board__turn-icon"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+            fill="#969696"
+            fill-rule="evenodd"
+          />
+        </svg>
 
         &nbsp&nbsp Turn
-    </div>
-
-    <div id="restart-button" class="game-board__restart">
-    <svg class="game-board__restart-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M19.524 0h-1.88a.476.476 0 0 0-.476.499l.159 3.284A9.81 9.81 0 0 0 9.835.317C4.415.317-.004 4.743 0 10.167.004 15.597 4.406 20 9.835 20a9.796 9.796 0 0 0 6.59-2.536.476.476 0 0 0 .019-.692l-1.348-1.349a.476.476 0 0 0-.65-.022 6.976 6.976 0 0 1-9.85-.63 6.987 6.987 0 0 1 .63-9.857 6.976 6.976 0 0 1 10.403 1.348l-4.027-.193a.476.476 0 0 0-.498.476v1.881c0 .263.213.476.476.476h7.944A.476.476 0 0 0 20 8.426V.476A.476.476 0 0 0 19.524 0Z" fill="#1F3641"/></svg>
-  </div>
-    <!-- tic-tac-toe board -->
-    <div class="playArea" id="playArea">
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-      <div class="game-board-grid-item"></div>
-    </div>
-
-    <div id="xWin">
-      <div id="xWinText" class="game-board__xWin">
-        "X (YOU)"
-        <div class="game-board__score-bold">0</div>
       </div>
-    </div>  
-    <div id="tie">
-      <div id="tieText" class="game-board__tie">
-        "TIES"
-        <div class="game-board__score-bold">0</div>
-      </div>
-    </div>
-    <div id="oWin">
-      <div id="oWinText" class="game-board__xWin">
-        "O (CPU)"
-        <div class="game-board__score-bold">0</div>
-      </div>
-    </div>
-  </main>
 
+      <div id="restart-button" class="game-board__restart">
+        <svg
+          class="game-board__restart-icon"
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19.524 0h-1.88a.476.476 0 0 0-.476.499l.159 3.284A9.81 9.81 0 0 0 9.835.317C4.415.317-.004 4.743 0 10.167.004 15.597 4.406 20 9.835 20a9.796 9.796 0 0 0 6.59-2.536.476.476 0 0 0 .019-.692l-1.348-1.349a.476.476 0 0 0-.65-.022 6.976 6.976 0 0 1-9.85-.63 6.987 6.987 0 0 1 .63-9.857 6.976 6.976 0 0 1 10.403 1.348l-4.027-.193a.476.476 0 0 0-.498.476v1.881c0 .263.213.476.476.476h7.944A.476.476 0 0 0 20 8.426V.476A.476.476 0 0 0 19.524 0Z"
+            fill="#1F3641"
+          />
+        </svg>
+      </div>
+      <!-- tic-tac-toe board -->
+      <div class="playArea" id="playArea">
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+        <div class="game-board-grid-item"></div>
+      </div>
+
+      <div id="xWin">
+        <div id="xWinText" class="game-board__xWin">
+          "X (YOU)"
+          <div class="game-board__score-bold">0</div>
+        </div>
+      </div>
+      <div id="tie">
+        <div id="tieText" class="game-board__tie">
+          "TIES"
+          <div class="game-board__score-bold">0</div>
+        </div>
+      </div>
+      <div id="oWin">
+        <div id="oWinText" class="game-board__xWin">
+          "O (CPU)"
+          <div class="game-board__score-bold">0</div>
+        </div>
+      </div>
+    </main>
 
     <!-- <div class="container-fluid d-flex text-center justify-content-center " >
           <div class="col-12 col-sm-8 col-lg-6 board-container align-self-center">
@@ -89,8 +169,7 @@
               </div>
             </div>
       </div> -->
-    
 
-<script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
