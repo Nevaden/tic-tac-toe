@@ -43,7 +43,7 @@ body {
   align-items: center;
   text-align: center;
 
-  display: grid !important; 
+  display: none !important;       /*   dont forget to undo this */
 }
 .game-board__turn {
   width: 100%;
@@ -63,7 +63,7 @@ body {
 .game-board__restart {
   width: 50%;
   background-color: #A8BFC9;
-  padding: 1.6rem;
+  padding: 1.5rem;
   border-radius: 1rem;
   justify-self: flex-end; 
 }
