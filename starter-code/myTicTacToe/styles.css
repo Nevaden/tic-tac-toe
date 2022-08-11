@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+.displayNone {
+  display: none !important; }
+
+.displayGrid {
+  display: grid !important; }
+
+.displayBlock {
+  display: block !important; }
 
 html {
   font-size: 62%;
@@ -87,9 +95,9 @@ body {
       background-color: #A8BFC9; 
     }
 
-      .landing-page-mark-x.selected > svg, .landing-page-mark-o.selected > svg {
-        fill: #1A2A33; 
-      }
+    .landing-page-mark-x.selected > svg > path, .landing-page-mark-o.selected > svg > path {
+      fill: #1A2A33; 
+    }
 
   .landing-page__x-icon, .landing-page__o-icon {
     width: 3.2rem;
@@ -121,6 +129,7 @@ body {
   .vs-cpu {
     background-color: #F2B137;
     box-shadow: inset 0 -0.8rem 0 #B77C0C; 
+    margin-bottom: 1.5rem;
   }
 
   .vs-cpu:hover {
