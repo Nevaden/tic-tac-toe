@@ -169,26 +169,30 @@ function playVsPlayer() {
 	getPlayerChoice();	
 }
 
-function cpuMove() {
+async function cpuMove() {
 	playArea.classList.remove(x_class);
 	playArea.classList.remove(o_class);
 	game_board_grid_items.forEach(item => {
 		if (!item.classList.contains('x') && !item.classList.contains('o')) {
 			item.removeEventListener('click', playMoves);
 		}
-		
-
-		
-		findCPUMove();
-
-		getPlayerChoice();	
-
 	});
 
-}
+
+
+		
+	
+		
+		findCPUMove();
+		endCondtions();
+		getPlayerChoice();	
+
+	
+
+};
 
 function findCPUMove() {
-	let cpuSelection = (Math.floor(Math.random() * availableMoves.length))
+	let cpuSelection = (Math.floor(Math.random() * availableMoves.length-1))
 	cpuSelection = availableMoves[cpuSelection]
 
 	if (currentTurn == "X") {
@@ -197,7 +201,13 @@ function findCPUMove() {
 		playerOMoves.push(Number(game_board_grid_items[cpuSelection].id))
 	}
 
-	game_board_grid_items[cpuSelection].classList.add("select"+currentTurn);
+	for( var i = 0; i < availableMoves.length; i++){ 
+        if ( availableMoves[i] === Number(game_board_grid_items[cpuSelection].id)-1) { 
+            availableMoves.splice(i, 1); 
+        }
+    }
+
+	game_board_grid_items[cpuSelection-1].classList.add("select"+currentTurn);
 	
 }
 
