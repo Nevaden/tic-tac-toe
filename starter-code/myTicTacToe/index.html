@@ -15,6 +15,41 @@
   </head>
   <body>
 
+    <section id="backdrop" class="backdrop displayNone"></section>
+
+    <!-- winner modal! woohoo! -->
+    <section id="winnerModal" class="winnerModal displayNone" index="2">
+      <h3></h3>
+      <div class="winnerModal__result modal__icon">
+        <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg"><path id="GameWinner" d="" fill="#31C3BD" fill-rule="evenodd"/></svg>
+        <h1 class="heading-lg">TAKES THE ROUND</h1>
+      </div>
+    
+      <div class="modal__buttons">
+        <button id="quit" class="button button--silver-small button--small" onclick="location.href='../myTicTacToe/index.html' ">Quit</button>
+        <button id="next-round" class="button button--yellow-small button--small">Next Round</button>
+      </div>
+
+    </section>
+
+    <!-- tie Modal -->
+    <section id="tieModal" class="tieModal displayNone" index="2">
+
+    </section>
+
+    <!-- Restart Modal-->
+    <section id="restartModal" class="restartModal displayNone" index="2">
+      <h1 class="heading-lg">Restart Game</h1>
+      <div class="modal__buttons">
+        <button id="button-cancel" class="button button--silver-small button--small">
+          No, Cancel
+        </button>
+        <button id="yesButton-restart" class="button button--yellow-small button--small">
+          Yes, Restart
+        </button>
+      </div>
+    </section>
+
     <section id="landing-page" class="landing-page container">
       <div class="logo">
         <svg
