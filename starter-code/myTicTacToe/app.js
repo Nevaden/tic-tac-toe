@@ -1,4 +1,8 @@
 // const currentTurn = document.getElementById("current_turn"); //Get current Turn.
+const backDrop = document.getElementById("backdrop");
+const cancelRestart = document.getElementById("button-cancel");
+const yesRestart = document.getElementById("yesButton-restart");
+const restart_button = document.getElementById("restart-button");
 
 const vsCPU = document.getElementById("vs-cpu");
 const vsPlayer = document.getElementById("vs-player");
@@ -10,6 +14,10 @@ const game_board_grid_items = document.querySelectorAll('.game-board-grid-item')
 const x_scoreObj = document.getElementById("xWinText");
 const o_scoreObj = document.getElementById("oWinText");
 const tiesObj =  document.getElementById("tieText");
+const restartButton = document.getElementById("restart-button");
+const restartModal = document.getElementById("restartModal");
+const winnerModal = document.getElementById("winnerModal");
+const tieModal = document.getElementById("tieModal");
 const x_class = "X";
 const o_class = "O";
 let playerSelectedSymbol = "X";
@@ -22,7 +30,7 @@ let oWins = 0;
 let ties = 0;
 let playerXMoves = [];
 let playerOMoves = [];
-let avaiableMoves = [1,2,3,4,5,6,7,8,9];
+let availableMoves = [1,2,3,4,5,6,7,8,9];
 
 let winningCombos = [
 	[1,2,3],
@@ -79,6 +87,9 @@ function setGameMode() {
 }
 
 function startGame() {
+	playerXMoves = [];
+	playerOMoves = [];
+	availableMoves = [1,2,3,4,5,6,7,8,9];
 	setBoardHoverSymbol();
 	initialScoreBoard();
 	setTurn();
@@ -149,9 +160,9 @@ function playMoves(event){
 
 	currentGridItem.classList.add("select"+currentTurn);
 	
-    for( var i = 0; i < avaiableMoves.length; i++){ 
-        if ( avaiableMoves[i] === Number(currentGridItem.id)) { 
-            avaiableMoves.splice(i, 1); 
+    for( var i = 0; i < availableMoves.length; i++){ 
+        if ( availableMoves[i] === Number(currentGridItem.id)) { 
+            availableMoves.splice(i, 1); 
         }
     }
 
@@ -205,7 +216,7 @@ function winCheck(turn) {
 }
 
 function drawCheck() {
-	if (avaiableMoves.length == 0) {
+	if (availableMoves.length == 0) {
 		console.log("display modal");
 		return true;
 	}
@@ -221,16 +232,83 @@ function gameEnd(winningNumbers="") {
 		if (currentTurn == "O") {
 			let currentNumber = o_scoreObj.children[0].textContent
 			o_scoreObj.children[0].textContent = Number(++currentNumber)
+			document.getElementById("GameWinner").setAttribute("d",pathTurnX )
+			document.getElementById("GameWinner").setAttribute("fill","#FFC860" )
+			//assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
+	
+			winnerModal.classList.add("displayBlock")
+			backDrop.classList.add("displayBlock")
+			winnerModal.classList.remove("displayNone")
+			
+
 		} else {
+
 			let currentNumber = x_scoreObj.children[0].textContent
 			x_scoreObj.children[0].textContent = Number(++currentNumber)
+
+			document.getElementById("GameWinner").setAttribute("d",pathTurnO )
+			winnerModal.classList.add("displayBlock")
+			backDrop.classList.add("displayBlock")
+			winnerModal.classList.remove("displayNone")
+
 		}
 		
 	//display win modal with turn data(turn)
-	} else {
+	} else { 
 		//display draw modal
 		let currentNumber = tiesObj.children[0].textContent
 		tiesObj.children[0].textContent = Number(++currentNumber)
+
 	}
 
 }
+
+
+function RestartGameClick() {
+
+
+	// cancelRestart 
+	// yesRestart 
+	restartModal.classList.add("displayBlock")
+	backDrop.classList.add("displayBlock")
+	restartModal.classList.remove("displayNone")
+	
+	cancelRestart.addEventListener('click',() => {
+		restartModal.classList.add("displayNone")
+		restartModal.classList.remove("displayBlock")
+		backDrop.classList.add("displayNone")
+		backDrop.classList.remove("displayBlock")
+	});
+	backDrop.addEventListener('click',() => {
+		restartModal.classList.add("displayNone")
+		restartModal.classList.remove("displayBlock")
+		backDrop.classList.add("displayNone")
+		backDrop.classList.remove("displayBlock")
+		});
+		yesRestart.addEventListener('click', RestartGame);	
+}
+
+function RestartGame() {
+	currentTurn = "X"
+	restartModal.classList.add("displayNone")
+	restartModal.classList.remove("displayBlock")
+	backDrop.classList.add("displayNone")
+	backDrop.classList.remove("displayBlock")
+	gameBoardTurn.classList.remove("selectX")
+	gameBoardTurn.classList.add("selectO")
+	playerXMoves = [];
+	playerOMoves = [];
+	availableMoves = [1,2,3,4,5,6,7,8,9];
+
+
+	game_board_grid_items.forEach(item => {
+		item.classList.remove("highlighted");
+		item.classList.remove("selectX");
+		item.classList.remove("selectO");
+		item.removeEventListener('click', playMoves);
+	})
+	startGame();	
+}
+
+restart_button.addEventListener('click', RestartGameClick);
