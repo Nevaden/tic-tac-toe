@@ -192,23 +192,25 @@ async function cpuMove() {
 };
 
 function findCPUMove() {
-	let cpuSelection = (Math.floor(Math.random() * availableMoves.length-1))
+	let cpuSelection = (Math.floor(Math.random() * availableMoves.length))
+	
+
 	cpuSelection = availableMoves[cpuSelection]
 
 	if (currentTurn == "X") {
-		playerXMoves.push(Number(game_board_grid_items[cpuSelection].id))
+		playerXMoves.push(Number(cpuSelection))
 	} else {
-		playerOMoves.push(Number(game_board_grid_items[cpuSelection].id))
+		playerOMoves.push(Number(cpuSelection))
 	}
 
 	for( var i = 0; i < availableMoves.length; i++){ 
-        if ( availableMoves[i] === Number(game_board_grid_items[cpuSelection].id)-1) { 
+        if ( availableMoves[i] === Number(cpuSelection)) { 
             availableMoves.splice(i, 1); 
+			break;
         }
     }
-
 	game_board_grid_items[cpuSelection-1].classList.add("select"+currentTurn);
-	
+
 }
 
 function getPlayerChoice() {
@@ -231,6 +233,7 @@ function playMoves(event){
     for( var i = 0; i < availableMoves.length; i++){ 
         if ( availableMoves[i] === Number(currentGridItem.id)) { 
             availableMoves.splice(i, 1); 
+			break;
         }
     }
 
