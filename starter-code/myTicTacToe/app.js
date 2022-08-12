@@ -1,9 +1,11 @@
 // const currentTurn = document.getElementById("current_turn"); //Get current Turn.
 const backDrop = document.getElementById("backdrop");
+const quit_tie = document.getElementById("quit-tie");
+const next_round_tie = document.getElementById("next-round-tie");
 const cancelRestart = document.getElementById("button-cancel");
 const yesRestart = document.getElementById("yesButton-restart");
 const restart_button = document.getElementById("restart-button");
-
+const next_round = document.getElementById("next-round");
 const vsCPU = document.getElementById("vs-cpu");
 const vsPlayer = document.getElementById("vs-player");
 const landingPage = document.getElementById("landing-page");
@@ -20,7 +22,8 @@ const winnerModal = document.getElementById("winnerModal");
 const tieModal = document.getElementById("tieModal");
 const x_class = "X";
 const o_class = "O";
-let playerSelectedSymbol = "X";
+let playerSelectedSymbol = x_class;
+
 let currentTurn = "X"; 
 let isVsPlayer = false;
 
@@ -64,7 +67,7 @@ pickSymbols.forEach(mark => {
 
 
 function getUserChoice() {
-	playerSelectedSymbol = Object.assign({},this.id);
+	playerSelectedSymbol = this.id;
 
 	this.classList.add('selected');
 	if (this.nextElementSibling) {
@@ -94,10 +97,10 @@ function startGame() {
 	initialScoreBoard();
 	setTurn();
 
-	if (!isVsPlayer) {
-		playVsCpu();
-	} else { 
+	if (isVsPlayer) {
 		playVsPlayer(); 
+	} else { 
+		playVsCpu();
 	}
 }
 
@@ -115,12 +118,25 @@ function setBoardHoverSymbol() {
 }
 
 function initialScoreBoard() {
-	if (document.getElementById("X").classList.contains("selected")) {
-		x_scoreObj.childNodes[0].nodeValue = "X (P1)"
-		o_scoreObj.childNodes[0].nodeValue = "O (P2)"
-	} else {
-		x_scoreObj.childNodes[0].nodeValue = "X (P2)"
-		o_scoreObj.childNodes[0].nodeValue = "O (P1)"	
+
+	if (isVsPlayer) {
+		if (document.getElementById("X").classList.contains("selected")) {
+			x_scoreObj.childNodes[0].nodeValue = "X (P1)"
+			o_scoreObj.childNodes[0].nodeValue = "O (P2)"
+		} else {
+			x_scoreObj.childNodes[0].nodeValue = "X (P2)"
+			o_scoreObj.childNodes[0].nodeValue = "O (P1)"	
+		}
+		
+		} else {
+			if (document.getElementById("X").classList.contains("selected")) {
+				x_scoreObj.childNodes[0].nodeValue = "X (You)"
+				o_scoreObj.childNodes[0].nodeValue = "O (CPU)"
+			} else {
+				x_scoreObj.childNodes[0].nodeValue = "X (CPU)"
+				o_scoreObj.childNodes[0].nodeValue = "O (YOU)"	
+			}
+		
 	}
 
 	x_scoreObj.children[0].textContent = xWins
@@ -139,8 +155,38 @@ function setTurn() {
 	}
 }
 
+function playVsCpu() {
+	if (document.getElementById("X").classList.contains("selected") === x_class) {
+		cpuMove();
+	} else {
+		getPlayerChoice();
+	}
+}
+
 function playVsPlayer() {
 	getPlayerChoice();	
+}
+
+function cpuMove() {
+	playArea.classList.remove(x_class);
+	playArea.classList.remove(o_class);
+	game_board_grid_items.forEach(item => {
+		if (!item.classList.contains('x') && !item.classList.contains('o')) {
+			item.removeEventListener('click', playMoves);
+		}
+		
+
+		
+		findCPUMove();
+
+	});
+
+}
+
+function findCPUMove() {
+	availableMoves
+	currentGridItem.classList.add("select"+currentTurn);
+	game_board_grid_items
 }
 
 function getPlayerChoice() {
@@ -231,7 +277,8 @@ function gameEnd(winningNumbers="") {
 		}
 		if (currentTurn == "O") {
 			let currentNumber = o_scoreObj.children[0].textContent
-			o_scoreObj.children[0].textContent = Number(++currentNumber)
+			o_scoreObj.children[0].textContent = ++oWins//Number(++currentNumber)
+			
 			document.getElementById("GameWinner").setAttribute("d",pathTurnX )
 			document.getElementById("GameWinner").setAttribute("fill","#FFC860" )
 			//assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
@@ -240,28 +287,49 @@ function gameEnd(winningNumbers="") {
 			winnerModal.classList.add("displayBlock")
 			backDrop.classList.add("displayBlock")
 			winnerModal.classList.remove("displayNone")
+
+			next_round.addEventListener('click', function() {
+			winnerModal.classList.remove("displayBlock");
+			backDrop.classList.remove("displayBlock");
+			winnerModal.classList.add("displayNone");
+				RestartGame();
+			});
 			
 
 		} else {
 
 			let currentNumber = x_scoreObj.children[0].textContent
-			x_scoreObj.children[0].textContent = Number(++currentNumber)
-
+			x_scoreObj.children[0].textContent = ++xWins//Number(++currentNumber)
+			
 			document.getElementById("GameWinner").setAttribute("d",pathTurnO )
 			winnerModal.classList.add("displayBlock")
 			backDrop.classList.add("displayBlock")
 			winnerModal.classList.remove("displayNone")
 
+			next_round.addEventListener('click', function() {
+				winnerModal.classList.remove("displayBlock");
+				backDrop.classList.remove("displayBlock");
+				winnerModal.classList.add("displayNone");	
+				RestartGame();
+			});
 		}
 		
 	//display win modal with turn data(turn)
 	} else { 
 		//display draw modal
 		let currentNumber = tiesObj.children[0].textContent
-		tiesObj.children[0].textContent = Number(++currentNumber)
+		tiesObj.children[0].textContent = ++ties//Number(++currentNumber)
 
+		tieModal.classList.add("displayBlock")
+		backDrop.classList.add("displayBlock")
+		tieModal.classList.remove("displayNone")
+		next_round_tie.addEventListener('click', function() {
+			tieModal.classList.remove("displayBlock");
+			backDrop.classList.remove("displayBlock");
+			winnerModal.classList.add("displayNone");	
+			RestartGame();
+		})
 	}
-
 }
 
 
