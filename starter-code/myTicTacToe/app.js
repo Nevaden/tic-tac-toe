@@ -22,7 +22,7 @@ const winnerModal = document.getElementById("winnerModal");
 const tieModal = document.getElementById("tieModal");
 const x_class = "X";
 const o_class = "O";
-let playerSelectedSymbol = x_class;
+var playerSelectedSymbol = "X";
 
 let currentTurn = "X"; 
 let isVsPlayer = false;
@@ -67,7 +67,7 @@ pickSymbols.forEach(mark => {
 
 
 function getUserChoice() {
-	playerSelectedSymbol = this.id;
+	playerSelectedSymbolasdasd = this.id ;
 
 	this.classList.add('selected');
 	if (this.nextElementSibling) {
@@ -156,7 +156,9 @@ function setTurn() {
 }
 
 function playVsCpu() {
-	if (document.getElementById("X").classList.contains("selected") === x_class) {
+	if (document.getElementById("O").classList.contains("selected") && currentTurn == "X") {
+		cpuMove();
+	} else if (document.getElementById("X").classList.contains("selected") && currentTurn == "O") {
 		cpuMove();
 	} else {
 		getPlayerChoice();
@@ -179,14 +181,24 @@ function cpuMove() {
 		
 		findCPUMove();
 
+		getPlayerChoice();	
+
 	});
 
 }
 
 function findCPUMove() {
-	availableMoves
-	currentGridItem.classList.add("select"+currentTurn);
-	game_board_grid_items
+	let cpuSelection = (Math.floor(Math.random() * availableMoves.length))
+	cpuSelection = availableMoves[cpuSelection]
+
+	if (currentTurn == "X") {
+		playerXMoves.push(Number(game_board_grid_items[cpuSelection].id))
+	} else {
+		playerOMoves.push(Number(game_board_grid_items[cpuSelection].id))
+	}
+
+	game_board_grid_items[cpuSelection].classList.add("select"+currentTurn);
+	
 }
 
 function getPlayerChoice() {
@@ -218,6 +230,10 @@ function playMoves(event){
 		playerOMoves.push(Number(currentGridItem.id))
 	}
 	endCondtions();
+
+	if (!isVsPlayer) {
+		cpuMove();
+	}
 }
 
 function endCondtions() {
@@ -380,3 +396,7 @@ function RestartGame() {
 }
 
 restart_button.addEventListener('click', RestartGameClick);
+
+(function() {
+	sessionStorage.setItem("player","X");
+})();
