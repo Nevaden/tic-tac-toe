@@ -228,6 +228,13 @@ body {
   height: 2rem;
   fill: #A8BfC9; 
 }
+.game-board__turn-icon .selectO, .game-board__turn-icon .selectX svg path {
+  fill: #979797;
+}
+
+.game-board__turn svg path{
+  fill: #979797;
+}
 
 .game-board__restart {
   width: 50%;
@@ -276,9 +283,12 @@ border-radius: 1.5rem;
   cursor: pointer; 
 }
 
-.selectO svg path {
+.playArea .selectO svg path {
   fill: #F2B137;
 }
+/* #game-board__turn .selectO svg path {
+  fill: #979797;
+} */
 
 .game-board-grid-item.x-selected, .game-board-grid-item.o-selected {
   cursor: not-allowed;
