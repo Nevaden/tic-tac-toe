@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   font-family: 'Outfit', sans-serif;
@@ -17,8 +16,6 @@ html {
   font-size: 62%;
   box-sizing: border-box; 
 }
-
-
 
 body {
   font-size: 1.4rem;
@@ -286,9 +283,6 @@ border-radius: 1.5rem;
 .playArea .selectO svg path {
   fill: #F2B137;
 }
-/* #game-board__turn .selectO svg path {
-  fill: #979797;
-} */
 
 .game-board-grid-item.x-selected, .game-board-grid-item.o-selected {
   cursor: not-allowed;

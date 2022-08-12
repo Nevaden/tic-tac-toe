@@ -1,4 +1,4 @@
-// const currentTurn = document.getElementById("current_turn"); //Get current Turn.
+
 const backDrop = document.getElementById("backdrop");
 const quit_tie = document.getElementById("quit-tie");
 const next_round_tie = document.getElementById("next-round-tie");
@@ -54,12 +54,6 @@ const pickSymbols = document.querySelectorAll('#pick-symbol div');
 vsCPU.addEventListener('click', setGameMode);
 vsPlayer.addEventListener('click', setGameMode);
 
-// if (document.getElementById("current_turn").ATTRIBUTE_NODE("d") == pathTurnX) {
-//     document.getElementById("current_turn").setAttribute("d",pathTurnO );
-// } else {
-//     document.getElementById("current_turn").setAttribute("d",pathTurnX );
-// }
-
 
 pickSymbols.forEach(mark => {
 	mark.addEventListener('click', getUserChoice);
@@ -104,7 +98,7 @@ function startGame() {
 	}
 }
 
-//playArea.addEventListener("click", )
+
 
 
 function setBoardHoverSymbol() {
@@ -223,7 +217,7 @@ function getPlayerChoice() {
 
 function playMoves(event){
 	let currentGridItem = event.target;
-	//currentGridItem.classList.add("select" + currentTurn)
+
 	if (currentGridItem.tagName == "svg") {
 		currentGridItem = currentGridItem.parentElement;
 	}
@@ -306,11 +300,11 @@ function gameEnd(winningNumbers="") {
 		}
 		if (currentTurn == "O") {
 			let currentNumber = o_scoreObj.children[0].textContent
-			o_scoreObj.children[0].textContent = ++oWins//Number(++currentNumber)
+			o_scoreObj.children[0].textContent = ++oWins
 			
 			document.getElementById("GameWinner").setAttribute("d",pathTurnX )
 			document.getElementById("GameWinner").setAttribute("fill","#FFC860" )
-			//assssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+
 
 	
 			winnerModal.classList.add("displayBlock")
@@ -328,7 +322,7 @@ function gameEnd(winningNumbers="") {
 		} else {
 
 			let currentNumber = x_scoreObj.children[0].textContent
-			x_scoreObj.children[0].textContent = ++xWins//Number(++currentNumber)
+			x_scoreObj.children[0].textContent = ++xWins
 			
 			document.getElementById("GameWinner").setAttribute("d",pathTurnO )
 			winnerModal.classList.add("displayBlock")
@@ -343,11 +337,11 @@ function gameEnd(winningNumbers="") {
 			});
 		}
 		
-	//display win modal with turn data(turn)
+
 	} else { 
-		//display draw modal
+
 		let currentNumber = tiesObj.children[0].textContent
-		tiesObj.children[0].textContent = ++ties//Number(++currentNumber)
+		tiesObj.children[0].textContent = ++ties
 
 		tieModal.classList.add("displayBlock")
 		backDrop.classList.add("displayBlock")
@@ -363,10 +357,7 @@ function gameEnd(winningNumbers="") {
 
 
 function RestartGameClick() {
-
-
-	// cancelRestart 
-	// yesRestart 
+ 
 	restartModal.classList.add("displayBlock")
 	backDrop.classList.add("displayBlock")
 	restartModal.classList.remove("displayNone")
