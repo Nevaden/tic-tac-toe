@@ -135,12 +135,12 @@ function playVsPlayer() {
 function getPlayerChoice() {
 	game_board_grid_items.forEach(item => {
 		if (!item.classList.contains('x') && !item.classList.contains('o')) {
-			item.addEventListener('click', playHandler, { once: true });
+			item.addEventListener('click', playMoves, { once: true });
 		}
 	});
 }
 
-function playHandler(event){
+function playMoves(event){
 	let currentGridItem = event.target;
 	//currentGridItem.classList.add("select" + currentTurn)
 	if (currentGridItem.tagName == "svg") {
