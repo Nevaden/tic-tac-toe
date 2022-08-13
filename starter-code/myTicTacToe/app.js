@@ -32,7 +32,7 @@ let xWins = 0;
 let oWins = 0;
 let ties = 0;
 let playerXMoves = [];
-let playerOMoves = [];
+let playerOMoves = []; 
 let availableMoves = [1,2,3,4,5,6,7,8,9];
 
 let winningCombos = [
@@ -79,7 +79,7 @@ function setGameMode() {
 	landingPage.classList.add("displayNone");
 	gameBoard.classList.add("displayGrid");
 	gameBoard.classList.remove("displayNone");
-
+	
 	startGame();
 }
 
@@ -122,14 +122,14 @@ function initialScoreBoard() {
 			o_scoreObj.childNodes[0].nodeValue = "O (P1)"	
 		}
 		
+	} else {
+		if (document.getElementById("X").classList.contains("selected")) {
+			x_scoreObj.childNodes[0].nodeValue = "X (You)"
+			o_scoreObj.childNodes[0].nodeValue = "O (CPU)"
 		} else {
-			if (document.getElementById("X").classList.contains("selected")) {
-				x_scoreObj.childNodes[0].nodeValue = "X (You)"
-				o_scoreObj.childNodes[0].nodeValue = "O (CPU)"
-			} else {
-				x_scoreObj.childNodes[0].nodeValue = "X (CPU)"
-				o_scoreObj.childNodes[0].nodeValue = "O (YOU)"	
-			}
+			x_scoreObj.childNodes[0].nodeValue = "X (CPU)"
+			o_scoreObj.childNodes[0].nodeValue = "O (YOU)"	
+		}
 		
 	}
 
@@ -166,23 +166,16 @@ function playVsPlayer() {
 async function cpuMove() {
 	playArea.classList.remove(x_class);
 	playArea.classList.remove(o_class);
+
 	game_board_grid_items.forEach(item => {
 		if (!item.classList.contains('x') && !item.classList.contains('o')) {
 			item.removeEventListener('click', playMoves);
 		}
 	});
 
-
-
-		
-	
-		
-		findCPUMove();
-		endCondtions();
-		getPlayerChoice();	
-
-	
-
+	findCPUMove();
+	endCondtions();
+	getPlayerChoice();	
 };
 
 function findCPUMove() {
